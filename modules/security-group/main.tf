@@ -7,7 +7,7 @@ resource "aws_security_group" "security_group" {
   dynamic "ingress" {
     for_each = var.rules
 
-    content {
+    content { #Defines what each generated ingress block should contain.
       description = lookup(ingress.value, "description", null)
 
       from_port   = ingress.value.from_port
